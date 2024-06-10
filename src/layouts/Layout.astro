@@ -15,9 +15,16 @@ type Props = {
   description?: string;
   path?: string;
   ogImage?: string;
+  rssUrl?: string;
 };
 
-const { title = "", description = "", path = "/", ogImage = "" } = Astro.props;
+const {
+  title = "",
+  description = "",
+  path = "/",
+  ogImage = "",
+  rssUrl = "",
+} = Astro.props;
 
 const database = await client.getDatabase();
 const siteTitle = title
@@ -52,6 +59,12 @@ const siteOGImage = getUrl(
     <link rel="icon" type="image/svg+xml" href={getUrl("/favicon.svg")} />
     <link rel="sitemap" href={getUrl("/sitemap-index.xml")} />
     <link rel="canonical" href={siteURL} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href={getUrl(rssUrl || "/rss.xml")}
+      title="RSS2.0"
+    />
     {
       config?.googleFonts && (
         <GoogleFontsOptimizer
