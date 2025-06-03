@@ -1,4 +1,61 @@
-import type { Config } from "./lib/interfaces";
+import type { Client, Options } from "notiondown";
+
+export type Config = {
+  title?: string;
+  description?: string;
+  dateFormat?: string;
+  postsPerPage?: number;
+  head?: {
+    titleSeparator?: string;
+  };
+  og?: {
+    siteImagePath?: string;
+    baseImagePath?: string;
+    backgroundColor?: string;
+    titleStyle?: {
+      x?: number;
+      y?: number;
+      width?: number;
+      fontFamily?: string[];
+      fontSize?: number;
+      lineHeight?: number;
+      lineClamp?: number;
+      align?: "left" | "right" | "center";
+      color?: string;
+    };
+  };
+  googleFonts?: string;
+  body?: {
+    classes?: string;
+    fontFamily?: string;
+  };
+  nav?: {
+    classes?: string;
+    titleClasses?: string;
+    titleFontFamily?: string;
+  };
+  index?: {
+    titleClasses?: string;
+    titleFontFamily?: string;
+  };
+  post?: {
+    classes?: string;
+    fontFamily?: string;
+    titleClasses?: string;
+    titleFontFamily?: string;
+  };
+  footer?: {
+    content?: string;
+    classes?: string;
+  };
+  notFound?: {
+    titleClasses?: string;
+    titleFontFamily?: string;
+    title?: string;
+    description?: string;
+  };
+  notiondown?: Partial<Options>;
+};
 
 const year = new Date().getFullYear();
 
@@ -23,6 +80,11 @@ const config: Config = {
     titleClasses: "text-9xl",
     titleFontFamily: "Londrina Solid, sans-serif",
   },
+  notiondown: {
+    properties: {
+      title: "Page",
+    }
+  }
 };
 
 export default config;
