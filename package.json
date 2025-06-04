@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "scripts": {
     "dev": "astro dev",
@@ -33,7 +33,7 @@
     "ezog": "^0.4.0",
     "katex": "^0.16.22",
     "mermaid": "^11.6.0",
-    "notiondown": "^0.1.4",
+    "notiondown": "^0.1.5",
     "prismjs": "^1.30.0",
     "sharp": "^0.34.2",
     "tailwindcss": "^4.1.8"
