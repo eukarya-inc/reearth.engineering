@@ -32,7 +32,7 @@
     "ezog": "^0.4.0",
     "katex": "^0.16.25",
     "mermaid": "^11.12.1",
-    "notiondown": "^0.3.0",
+    "notiondown": "^0.3.1",
     "sharp": "^0.34.4",
     "tailwindcss": "^4.1.16"
   },
