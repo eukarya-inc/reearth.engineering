@@ -24,7 +24,7 @@
     "@astrojs/sitemap": "^3.6.0",
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "^4.1.16",
-    "astro": "^5.15.1",
+    "astro": "^5.15.3",
     "astro-analytics": "^2.7.0",
     "astro-google-fonts-optimizer": "^0.2.2",
     "astro-robots-txt": "^1.0.0",
@@ -32,20 +32,20 @@
     "ezog": "^0.4.0",
     "katex": "^0.16.25",
     "mermaid": "^11.12.1",
-    "notiondown": "^0.2.4",
+    "notiondown": "^0.3.0",
     "sharp": "^0.34.4",
     "tailwindcss": "^4.1.16"
   },
   "devDependencies": {
     "@types/katex": "^0.16.7",
-    "@types/node": "^24.9.1",
-    "eslint": "^9.38.0",
+    "@types/node": "^24.10.0",
+    "eslint": "^9.39.1",
     "eslint-config-reearth": "^0.3.8",
-    "eslint-plugin-astro": "^1.4.0",
+    "eslint-plugin-astro": "^1.5.0",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "symlink-dir": "^9.0.0",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.4"
+    "vitest": "^4.0.7"
   }
 }
