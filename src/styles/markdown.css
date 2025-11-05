@@ -125,3 +125,12 @@
 .markdown .youtube {
   @apply aspect-video w-full h-auto;
 }
+
+.markdown .mermaid {
+  @apply my-8 flex justify-center;
+}
+
+.markdown .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
