@@ -21,11 +21,11 @@ const ogBaseHash = ogBaseBuffer
   : "no-base";
 
 // Generate hash of ezog configuration for cache invalidation
-const imageWidth = 1200;
-const imageHeight = 630;
-const imagePadding = 80;
-const fontSize = 60;
-const lineHeight = 80;
+const imageWidth = config.og?.imageWidth ?? 1200;
+const imageHeight = config.og?.imageHeight ?? 630;
+const imagePadding = config.og?.imagePadding ?? 80;
+const fontSize = config.og?.titleStyle?.fontSize ?? 60;
+const lineHeight = config.og?.titleStyle?.lineHeight ?? 80;
 
 const configHash = crypto
   .createHash("sha256")

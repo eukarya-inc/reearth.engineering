@@ -12,6 +12,9 @@ export type Config = {
     siteImagePath?: string;
     baseImagePath?: string;
     backgroundColor?: string;
+    imageWidth?: number;
+    imageHeight?: number;
+    imagePadding?: number;
     titleStyle?: {
       x?: number;
       y?: number;
