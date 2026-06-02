@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: reearth.engineering
+  namespace: eukarya-inc
+  description: https://reearth.engineering
+  annotations:
+    github.com/project-slug: eukarya-inc/reearth.engineering
+  links:
+    - url: https://github.com/eukarya-inc/reearth.engineering
+      title: GitHub
+      icon: github
+    - url: https://reearth.engineering
+      title: Website
+      icon: web
+  tags:
+    - astro
+spec:
+  type: service
+  lifecycle: experimental
+  owner: eukarya-inc/cto
