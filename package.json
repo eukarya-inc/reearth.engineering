@@ -1,0 +1,56 @@
+{
+  "name": "astrotion",
+  "type": "module",
+  "version": "0.0.1",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "test": "vitest",
+    "lint": "eslint . --fix",
+    "format": "prettier . --write",
+    "check": "prettier . --check",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.13",
+    "@astrojs/sitemap": "^3.6.0",
+    "@resvg/resvg-js": "^2.6.2",
+    "@tailwindcss/vite": "^4.1.16",
+    "astro": "^5.15.3",
+    "astro-analytics": "^2.7.0",
+    "astro-google-fonts-optimizer": "^0.2.2",
+    "astro-robots-txt": "^1.0.0",
+    "date-fns": "^4.1.0",
+    "ezog": "^0.4.0",
+    "katex": "^0.16.25",
+    "mermaid": "^11.12.1",
+    "notiondown": "^0.3.1",
+    "sharp": "^0.34.4",
+    "tailwindcss": "^4.1.16"
+  },
+  "devDependencies": {
+    "@types/katex": "^0.16.7",
+    "@types/node": "^24.10.0",
+    "@typescript-eslint/parser": "^8.59.3",
+    "eslint": "^9.39.1",
+    "eslint-config-reearth": "^0.3.8",
+    "eslint-plugin-astro": "^1.5.0",
+    "globals": "^17.6.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "symlink-dir": "^9.0.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.7"
+  },
+  "optionalDependencies": {
+    "wrangler": "^4.60.0"
+  }
+}

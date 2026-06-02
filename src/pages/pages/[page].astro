@@ -1,0 +1,46 @@
+---
+import Pagination from "../../components/Pagination.astro";
+import PostList from "../../components/PostList.astro";
+import config from "../../config";
+import Layout from "../../layouts/Layout.astro";
+import { listPosts } from "../../notion";
+
+export async function getStaticPaths() {
+  const { pageSize } = await listPosts(1);
+
+  return Array.from({ length: pageSize }, (_, i) => ({
+    params: { page: (i + 1).toString() },
+  }));
+}
+
+const { page } = Astro.params;
+const { database, totalPages, currentPage, posts } = await listPosts(
+  parseInt(page, 10) || 1,
+);
+---
+
+<Layout>
+  <main class="py-12 lg:py-20">
+    <article class="max-w-6xl mx-auto px-3">
+      <header class="text-center mb-12">
+        <h1 class:list={["mb-12 text-6xl title", config.index?.titleClasses]}>
+          {database.title}
+        </h1>
+        <p class="mx-auto max-w-xl">
+          Page {currentPage} of {totalPages}
+        </p>
+      </header>
+      <PostList posts={posts} />
+      <Pagination page={currentPage} pageCount={totalPages} />
+    </article>
+  </main>
+</Layout>
+<style
+  define:vars={{
+    titleFontFamily: config.index?.titleFontFamily || "inherit",
+  }}
+>
+  .title {
+    font-family: var(--titleFontFamily);
+  }
+</style>

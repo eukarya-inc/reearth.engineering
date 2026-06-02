@@ -1,0 +1,136 @@
+@reference "./global.css";
+
+/* Modified https://github.com/iandinwoodie/github-markdown-tailwindcss to support TailwindCSS v4 */
+
+/* Additional vertical padding used by kbd tag. */
+@utility py-05 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+
+.markdown {
+  @apply text-lg text-gray-900 leading-relaxed wrap-break-word;
+}
+
+.markdown > * {
+  @apply mb-5;
+}
+
+.markdown li {
+  font-size: inherit;
+}
+
+.markdown li + li {
+  @apply mt-1;
+}
+
+.markdown li > p + p {
+  @apply mt-6;
+}
+
+.markdown strong {
+  @apply font-semibold;
+}
+
+.markdown a {
+  @apply underline font-semibold;
+}
+
+.markdown strong a {
+  @apply font-bold;
+}
+
+.markdown h1 {
+  @apply leading-tight text-4xl font-semibold mb-4 mt-12 pb-2;
+}
+
+.markdown h2 {
+  @apply leading-tight text-2xl font-semibold mb-4 mt-10 pb-2;
+}
+
+.markdown h3 {
+  @apply leading-snug text-lg font-semibold mb-4 mt-10;
+}
+
+.markdown h4 {
+  @apply leading-none text-base font-semibold mb-4 mt-10;
+}
+
+.markdown h5 {
+  @apply leading-tight text-sm font-semibold mb-4 mt-10;
+}
+
+.markdown h6 {
+  @apply leading-tight text-sm font-semibold text-gray-600 mb-4 mt-10;
+}
+
+.markdown blockquote {
+  @apply text-base border-l-4 border-gray-300 pl-4 pr-4 text-gray-600;
+}
+
+.markdown code {
+  @apply font-mono text-sm inline bg-gray-200 rounded px-1 py-05;
+}
+
+.markdown pre {
+  @apply bg-gray-50 rounded p-4;
+}
+
+.markdown pre.shiki {
+  @apply bg-gray-50!;
+}
+
+.markdown pre code {
+  @apply block bg-transparent p-0 overflow-visible rounded-none whitespace-pre-wrap break-words;
+}
+
+.markdown ul {
+  @apply pl-8 list-disc;
+}
+
+.markdown ol {
+  @apply pl-8 list-decimal;
+}
+
+.markdown kbd {
+  @apply text-xs inline-block rounded border px-1 py-05 align-middle font-normal font-mono shadow;
+}
+
+.markdown table {
+  @apply text-base border-gray-600 block overflow-x-auto max-w-full;
+}
+
+.markdown th {
+  @apply border py-1 px-3;
+}
+
+.markdown td {
+  @apply border py-1 px-3;
+}
+
+/* Override pygments style background color. */
+.markdown .highlight pre {
+  @apply bg-gray-100!;
+}
+
+/* astrotion */
+.markdown img {
+  max-width: 100%;
+}
+
+.markdown figcaption {
+  @apply text-sm text-gray-500 mt-2;
+}
+
+.markdown .youtube {
+  @apply aspect-video w-full h-auto;
+}
+
+.markdown .mermaid {
+  @apply my-8 flex justify-center;
+}
+
+.markdown .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}

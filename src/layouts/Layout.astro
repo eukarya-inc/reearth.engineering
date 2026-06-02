@@ -1,0 +1,113 @@
+---
+import { GoogleAnalytics } from "astro-analytics";
+import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
+import "katex/dist/katex.min.css";
+
+import Nav from "../components/Nav.astro";
+import config from "../config";
+import { PUBLIC_GA_TRACKING_ID } from "../constants";
+import { client } from "../notion";
+import { getUrl } from "../utils";
+import "../styles/global.css";
+
+type Props = {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  rssUrl?: string;
+  database?: { title: string; description: string; cover?: string };
+};
+
+const {
+  title = "",
+  description = "",
+  canonicalUrl = "",
+  ogImage = "",
+  rssUrl = "",
+  database: dbProp,
+} = Astro.props;
+
+const database = dbProp ?? (await client.getDatabase());
+const siteTitle = title
+  ? `${title}${config.head?.titleSeparator || " | "}${database.title}`
+  : database.title;
+const siteDescription = description ? description : database.description;
+const siteURL = canonicalUrl ? new URL(canonicalUrl) : Astro.url;
+const siteOGImage = getUrl(
+  database.cover || config.og?.siteImagePath || "og-image.png",
+  Astro.site,
+);
+---
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{siteTitle}</title>
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={siteDescription} />
+    <meta property="og:url" content={siteURL} />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={siteDescription} />
+    <meta property="og:site_name" content={database.title} />
+    <meta property="og:image" content={ogImage || siteOGImage} />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={siteDescription} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage || siteOGImage} />
+    <link rel="icon" type="image/svg+xml" href={getUrl("/favicon.svg")} />
+    <link rel="sitemap" href={getUrl("/sitemap-index.xml")} />
+    <link rel="canonical" href={siteURL} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href={getUrl(rssUrl || "/rss.xml")}
+      title="RSS2.0"
+    />
+    {
+      config?.googleFonts && (
+        <GoogleFontsOptimizer
+          url={`https://fonts.googleapis.com/css2?family=${config.googleFonts}&display=swap`}
+        />
+      )
+    }
+    {PUBLIC_GA_TRACKING_ID && <GoogleAnalytics id={PUBLIC_GA_TRACKING_ID} />}
+  </head>
+  <body
+    class:list={[
+      "bg-white text-black font-body leading-normal body",
+      config.body?.classes,
+    ]}
+  >
+    <Nav title={database.title} />
+    <slot />
+    {
+      config.footer?.content && (
+        <footer
+          class:list={[
+            "text-xs text-gray-600 text-center",
+            config.footer?.classes,
+          ]}
+        >
+          <p class="max-w-5xl mx-auto px-6 py-6">{config.footer?.content}</p>
+        </footer>
+      )
+    }
+    <script>
+      import mermaid from "mermaid";
+
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "neutral",
+      });
+    </script>
+  </body>
+</html>
+<style define:vars={{ bodyFontFamily: config.body?.fontFamily || "inherit" }}>
+  .body {
+    font-family: var(--bodyFontFamily);
+  }
+</style>

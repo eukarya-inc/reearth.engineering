@@ -1,0 +1,30 @@
+---
+import config from "../config";
+import { getUrl } from "../utils";
+
+export type Props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+---
+
+<nav class:list={[config.nav?.classes]}>
+  <div
+    class="max-w-5xl mx-auto px-3 py-3 flex items-center justify-between h-16"
+  >
+    <a
+      href={getUrl("/")}
+      class:list={["text-xl title", config.nav?.titleClasses]}>{title}</a
+    >
+  </div>
+</nav>
+<style
+  define:vars={{
+    titleFontFamily: config.nav?.titleFontFamily || "inherit",
+  }}
+>
+  .title {
+    font-family: var(--titleFontFamily);
+  }
+</style>
